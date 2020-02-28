@@ -5,7 +5,7 @@ function flying_scripts_format_list($list) {
     return $list;
 }
 
-function flying_scripts_settings_scripts() {
+function flying_scripts_view_settings() {
 
     if (isset($_POST['submit'])) {
         update_option('flying_scripts_timeout', sanitize_text_field($_POST['flying_scripts_timeout']));
@@ -24,6 +24,7 @@ function flying_scripts_settings_scripts() {
             <th scope="row"><label>Include Keywords</label></th>
             <td>
                 <textarea name="flying_scripts_include_list" rows="4" cols="50"><?php echo implode('&#10;', $include_list); ?></textarea>
+                <p class="description">Keywords that identify scripts that should load on user interaction. One keyword per line.</p>
             </td>
         </tr>
         <tr>
@@ -41,6 +42,7 @@ function flying_scripts_settings_scripts() {
                     <option value="9" <?php if ($timeout == 9) {echo 'selected';} ?>>9s</option>
                     <option value="10" <?php if ($timeout == 10) {echo 'selected';} ?>>10s</option>
                 </select>
+            <p class="description">Load scripts after a timeout when there is no user interaction</p>
             <td>
         </tr>
     </tbody>
